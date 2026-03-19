@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>One UI 8.5 | Seamless Experience</title>
+    <style>
+        :root {
+            --samsung-blue: #0355d1;
+            --bg-light: #f4f7fa;
+            --card-bg: #ffffff;
+            --text-main: #1d1d1f;
+            --radius: 28px; /* Classic One UI rounded corners */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Large Header typical of One UI */
+        header {
+            width: 100%;
+            padding: 80px 24px 40px 24px;
+            text-align: left;
+            max-width: 500px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 8px;
+        }
+
+        /* Main Content Container */
+        main {
+            width: 90%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Feature Card */
+        .card {
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .card:active {
+            transform: scale(0.98);
+        }
+
+        .card h2 {
+            margin: 0 0 10px 0;
+            font-size: 1.25rem;
+        }
+
+        .icon {
+            width: 40px;
+            height: 40px;
+            background: var(--samsung-blue);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Button */
+        .cta-button {
+            background-color: var(--samsung-blue);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        footer {
+            margin-top: 50px;
+            padding-bottom: 30px;
+            font-size: 0.8rem;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>One UI 8.5</h1>
+        <p>Designed for you, <br>refined for everyone.</p>
+    </header>
+
+    <main>
+        <div class="card">
+            <div class="icon">AI</div>
+            <h2>Galaxy Intelligence</h2>
+            <p>Experience deeper integration with predictive multitasking and real-time context awareness.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">✧</div>
+            <h2>Fluid Motion 3.0</h2>
+            <p>Redesigned animations that respond to your touch with physics-based precision.</p>
+        </div>
+
+        <div class="card">
+            <div class="icon">⌂</div>
+            <h2>Smart Space</h2>
+            <p>Your widgets now morph based on your location and time of day.</p>
+        </div>
+
+        <button class="cta-button">Explore Features</button>
+    </main>
+
+    <footer>
+        &copy; 2026 Samsung Electronics
+    </footer>
+
+</body>
+</html>
