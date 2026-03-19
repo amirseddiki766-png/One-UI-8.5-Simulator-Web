@@ -3,140 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>One UI 8.5 | Seamless Experience</title>
+    <title>One UI 8.5 Quick Panel</title>
     <style>
         :root {
-            --samsung-blue: #0355d1;
-            --bg-light: #f4f7fa;
-            --card-bg: #ffffff;
-            --text-main: #1d1d1f;
-            --radius: 28px; /* Classic One UI rounded corners */
+            --panel-bg: rgba(255, 255, 255, 0.75);
+            --icon-active: #1a73e8;
+            --icon-inactive: #e0e0e0;
+            --text-color: #000000;
+            --blur: 25px;
         }
 
         body {
             margin: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-light);
-            color: var(--text-main);
+            padding: 0;
+            background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=1000') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Segoe UI', sans-serif;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Large Header typical of One UI */
-        header {
-            width: 100%;
-            padding: 80px 24px 40px 24px;
-            text-align: left;
-            max-width: 500px;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin: 0;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            color: #666;
-            margin-top: 8px;
-        }
-
-        /* Main Content Container */
-        main {
-            width: 90%;
-            max-width: 500px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        /* Feature Card */
-        .card {
-            background: var(--card-bg);
-            padding: 24px;
-            border-radius: var(--radius);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease;
-        }
-
-        .card:active {
-            transform: scale(0.98);
-        }
-
-        .card h2 {
-            margin: 0 0 10px 0;
-            font-size: 1.25rem;
-        }
-
-        .icon {
-            width: 40px;
-            height: 40px;
-            background: var(--samsung-blue);
-            border-radius: 12px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
         }
 
-        /* Button */
-        .cta-button {
-            background-color: var(--samsung-blue);
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
+        /* The Quick Panel Overlay */
+        .system-panel {
             width: 100%;
+            max-width: 450px;
+            height: 90vh;
+            background: var(--panel-bg);
+            backdrop-filter: blur(var(--blur));
+            -webkit-backdrop-filter: blur(var(--blur));
+            margin-top: 5vh;
+            border-radius: 40px 40px 0 0;
+            padding: 24px;
+            box-sizing: border-box;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Status Bar Simulation */
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        /* Control Toggles Grid */
+        .quick-settings {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px 10px;
+            margin-bottom: 40px;
+        }
+
+        .toggle-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .icon-circle {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background-color: var(--icon-inactive);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .active .icon-circle {
+            background-color: var(--icon-active);
+            color: white;
+        }
+
+        .label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        /* Brightness Slider Section */
+        .slider-container {
+            background: rgba(0,0,0,0.05);
+            padding: 20px;
+            border-radius: 24px;
             margin-top: 20px;
         }
 
-        footer {
-            margin-top: 50px;
-            padding-bottom: 30px;
-            font-size: 0.8rem;
-            color: #888;
+        input[type=range] {
+            width: 100%;
+            height: 12px;
+            border-radius: 10px;
+            appearance: none;
+            background: #ccc;
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background: var(--icon-active);
+            cursor: pointer;
+        }
+
+        /* Device Control Section */
+        .footer-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 18px;
+            border: none;
+            background: rgba(0,0,0,0.05);
+            font-weight: 600;
+            font-size: 0.85rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>One UI 8.5</h1>
-        <p>Designed for you, <br>refined for everyone.</p>
-    </header>
-
-    <main>
-        <div class="card">
-            <div class="icon">AI</div>
-            <h2>Galaxy Intelligence</h2>
-            <p>Experience deeper integration with predictive multitasking and real-time context awareness.</p>
+    <div class="system-panel">
+        <div class="status-bar">
+            <span>18:50</span>
+            <span>LTE 📶 🔋 98%</span>
         </div>
 
-        <div class="card">
-            <div class="icon">✧</div>
-            <h2>Fluid Motion 3.0</h2>
-            <p>Redesigned animations that respond to your touch with physics-based precision.</p>
+        <div class="quick-settings">
+            <div class="toggle-item active">
+                <div class="icon-circle">📶</div>
+                <span class="label">Wi-Fi</span>
+            </div>
+            <div class="toggle-item active">
+                <div class="icon-circle">🎧</div>
+                <span class="label">Bluetooth</span>
+            </div>
+            <div class="toggle-item">
+                <div class="icon-circle">🌙</div>
+                <span class="label">Mute</span>
+            </div>
+            <div class="toggle-item">
+                <div class="icon-circle">🔄</div>
+                <span class="label">Rotate</span>
+            </div>
+            <div class="toggle-item active">
+                <div class="icon-circle">🔦</div>
+                <span class="label">Flashlight</span>
+            </div>
+            <div class="toggle-item">
+                <div class="icon-circle">✈️</div>
+                <span class="label">Airplane</span>
+            </div>
+            <div class="toggle-item">
+                <div class="icon-circle">📍</div>
+                <span class="label">Location</span>
+            </div>
+            <div class="toggle-item">
+                <div class="icon-circle">👁️</div>
+                <span class="label">Eye Comfort</span>
+            </div>
         </div>
 
-        <div class="card">
-            <div class="icon">⌂</div>
-            <h2>Smart Space</h2>
-            <p>Your widgets now morph based on your location and time of day.</p>
+        <div class="slider-container">
+            <div style="display:flex; justify-content:space-between; margin-bottom:10px; font-size: 0.8rem;">
+                <span>Brightness</span>
+                <span>☀️</span>
+            </div>
+            <input type="range" min="0" max="100" value="70">
         </div>
 
-        <button class="cta-button">Explore Features</button>
-    </main>
-
-    <footer>
-        &copy; 2026 Samsung Electronics
-    </footer>
+        <div class="footer-buttons">
+            <button class="btn">Device control</button>
+            <button class="btn">Media output</button>
+        </div>
+    </div>
 
 </body>
 </html>
